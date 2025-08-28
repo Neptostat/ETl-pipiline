@@ -5,7 +5,7 @@ BASE = "https://exoplanetarchive.ipac.caltech.edu/TAP/sync"
 
 def exoplanets_pscomppars() -> pd.DataFrame:
     query = (
-        "SELECT TOP 100 "
+        "SELECT TOP 10000 "
         "pl_name, hostname, disc_year, disc_method, st_teff, st_mass, st_rad, "
         "pl_orbper, pl_rade, pl_bmasse, pl_orbsmax, pl_eqt, sy_dist, rastr, decstr "
         "FROM pscomppars"
