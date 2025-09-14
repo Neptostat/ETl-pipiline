@@ -16,9 +16,15 @@ def test_transform_computes_total_and_drops_null_customer(filename, expected_row
     df = pd.read_csv(data_path)
     out = transform(df)
 
+    assert "total" in out.columns
+    # One row has empty customer -> dropped
+    assert len(out) == 2
+
     if check_total:
         assert "total" in out.columns
         row = out.iloc[0]
         assert abs(float(row["total"]) - (row["quantity"] * row["unit_price"])) < 1e-6
 
     assert len(out) == expected_rows
+
+
